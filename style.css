@@ -1,0 +1,387 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg1: #0f172a;
+    --bg2: #1e1b4b;
+    --card: rgba(30, 41, 59, 0.78);
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --primary: #6366f1;
+    --secondary: #38bdf8;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --border: rgba(255,255,255,0.12);
+}
+
+body.light {
+    --bg1: #dbeafe;
+    --bg2: #ede9fe;
+    --card: rgba(255,255,255,0.8);
+    --text: #172033;
+    --muted: #64748b;
+    --border: rgba(0,0,0,0.1);
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+    color: var(--text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at top left, #4f46e5 0%, transparent 30%),
+        radial-gradient(circle at bottom right, #0891b2 0%, transparent 30%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+
+    transition: background 0.4s ease;
+      background-image: url(dice.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+
+}
+
+/* Main Card */
+.game-card {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: var(--card);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+  
+
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.theme-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    background: rgba(255,255,255,0.12);
+    color: var(--text);
+}
+
+/* Score */
+.score-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.score-box {
+    padding: 14px 8px;
+    text-align: center;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--border);
+}
+
+.score-box small {
+    display: block;
+    color: var(--muted);
+    font-size: 0.7rem;
+}
+
+.score-box strong {
+    display: block;
+    font-size: 1.4rem;
+    margin-top: 3px;
+}
+
+/* Dice Area */
+.dice-area {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 800px;
+}
+
+/* Dice */
+.dice {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    display: grid;
+    padding: 18px;
+
+    background: linear-gradient(145deg, #ffffff, #dbeafe);
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 35px rgba(0,0,0,0.35),
+        inset 0 -7px 12px rgba(0,0,0,0.12);
+
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    
+}
+
+.dice:hover {
+    transform: scale(1.05);
+}
+
+.pip {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #1e1b4b;
+    align-self: center;
+    justify-self: center;
+}
+
+.face-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.face-1 .pip {
+    width: 28px;
+    height: 28px;
+    background: #ef4444;
+}
+
+.face-2 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.face-2 .pip:nth-child(1) {
+    grid-area: 1 / 1;
+}
+
+.face-2 .pip:nth-child(2) {
+    grid-area: 2 / 2;
+}
+
+.face-3 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.face-3 .pip:nth-child(1) {
+    grid-area: 1 / 1;
+}
+
+.face-3 .pip:nth-child(2) {
+    grid-area: 2 / 2;
+}
+
+.face-3 .pip:nth-child(3) {
+    grid-area: 3 / 3;
+}
+
+.face-4 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.face-5 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.face-5 .pip:nth-child(1) {
+    grid-area: 1 / 1;
+}
+
+.face-5 .pip:nth-child(2) {
+    grid-area: 1 / 3;
+}
+
+.face-5 .pip:nth-child(3) {
+    grid-area: 2 / 2;
+}
+
+.face-5 .pip:nth-child(4) {
+    grid-area: 3 / 1;
+}
+
+.face-5 .pip:nth-child(5) {
+    grid-area: 3 / 3;
+}
+
+.face-6 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* 3D Roll Animation */
+.rolling {
+    animation: diceRoll 0.8s ease-in-out;
+}
+
+@keyframes diceRoll {
+    0% {
+        transform: rotateX(0) rotateY(0) scale(1);
+    }
+
+    25% {
+        transform: rotateX(180deg) rotateY(90deg) scale(1.15);
+    }
+
+    50% {
+        transform: rotateX(360deg) rotateY(180deg) scale(1.1);
+    }
+
+    75% {
+        transform: rotateX(540deg) rotateY(270deg) scale(1.15);
+    }
+
+    100% {
+        transform: rotateX(720deg) rotateY(360deg) scale(1);
+    }
+}
+
+/* Result */
+.result {
+    text-align: center;
+    min-height: 42px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 18px;
+}
+
+.result span {
+    color: var(--secondary);
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+/* Buttons */
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+button {
+    font-family: inherit;
+}
+
+.roll-btn,
+.reset-btn {
+    border: none;
+    padding: 14px;
+    border-radius: 13px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.roll-btn {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    box-shadow: 0 8px 20px rgba(99,102,241,0.4);
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.roll-btn:hover,
+.reset-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* History */
+.history {
+    margin-top: 25px;
+}
+
+.history-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.history-title h3 {
+    font-size: 1rem;
+}
+
+.clear-btn {
+    border: none;
+    background: transparent;
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+.history-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 35px;
+}
+
+.history-item {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99,102,241,0.25);
+    font-weight: 700;
+}
+
+/* Hint */
+.hint {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.75rem;
+    margin-top: 15px;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .game-card {
+        padding: 22px 18px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .dice {
+        width: 120px;
+        height: 120px;
+    }
+
+    .dice-area {
+        height: 210px;
+    }
+}
